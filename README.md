@@ -72,7 +72,15 @@ git에 저장소 생성 / d드라이브에 연결/ 프로젝트 확인 / `npm cr
 - git remote add origin https://github.com/gomdori2/react-study.git
   깃  명령어 온라인 추가하라 별명(호칭) 주소... 
 - git remote -v 주소 제대로 됬는지 확인할때
+- git add .
+- git commit 
+
+
+
 - git push -u origin main
+- -u를 붙여서 올리면 > git push만 해도 올라감.
+- git push origin main
+  깃 origin > main 
 
 ### 2.4. html 문서 작업 순서(컴포넌트 구분 디자인을 받았을 때 html 섹션 나누는법 배우기)
 
