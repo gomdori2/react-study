@@ -271,6 +271,6 @@ git에 저장소 생성 / d드라이브에 연결/ 프로젝트 확인 / `npm cr
 - `git remote -v` > add 됬는지 확인할 때_ 처음할때만 
 
 ### 3.5. 깃을 깃허브로 push 후 퇴근 한다. (매일 퇴근전, 필요시) 
-- `git push -u origin main`
+- `git push -u origin main` 
 - `git push origin main`
 - `git push`
