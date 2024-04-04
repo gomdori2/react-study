@@ -1,176 +1,63 @@
-# CSS 기초
+# css header 영역
 
-- html 은 화면에 보여줄 데이터(글자) 입니다.
-- css 는 화면에 보여줄 데이터를 보기 좋게 꾸며주는 역할을 합니다.
+## 1. html 태그 작업
 
-## 1. css 작성법 (4가지)
+### 1.1. anchor 태그
 
-### 1.1. 인라인 방식(html에 직접 적용)
+- `<a href="보여줄 페이지 주소">글자</a>`
+- `<a href="보여줄 페이지 주소>그림</a>`
+- `<a href="http://www.naver.com" target="_blank">네이버</a>`
+  : 새 탭으로 보여주기(`target="_blank`)
 
-- tag 내부에 직접 적용
-- <태그 style="이름 : 값">
+### 1.2. img 태그
 
-- 가독성이 떨어진다.
-- class로 관리 x 할 시 재사용 불가능
-- 리액트에선 의외로 많이 쓴다.
+- src(source)
 
-- 퍼블리셔 기준으로는 중요 x
+: 파일명.jpg, 파일명.png(뒷 배경이 불투명한), 파일명.gif, 파일명.svg
+: 팁 1. \*\*\* 1순위 png 고화질에 이미지 및 뒷 배경이 투명한 이미지
+: 팁 2. FE 는 .WebP(Next.js)
+: 상식. .gif 는 여러장의 이미지를 일정한 시간으로 교체하면서 보여주는 파일(여러사진을 합쳐서 시간을 줘서 움직이는것 처럼 만든거.) \_ 용량/css변경 불가.
 
-```html
-<body style="background:green"></body>
+- `<img src="경로/파일명.확장자" alt="이미지설명" />`
+- alt="이미지설명" 인터넷 끊겼을 때 대신해주는거
 
-리액트에선 > 삼항연산자를 사용한다.
-<body style={ 결과 ? {"background:green"} : {"background:red"} }></body>
+## 2. css 선택자 태그
 
-```
-
-### 1.2. `<style>` 태그 활용 하기
-
-- 가독성은 좋다.
-- css 코드 재활용은 힘들다.
-- 선택자 { css 적용 }
-  \_ css Selector { css 적용 }
-
-```html
-<style>
-  body {
-    background: hotpink;
-  }
-</style>
-리액트 const bodyCss ={ background : "hotpink" }
-
-<body style="{bodyCss}"></body>
-```
-
-### 1.3. 외부 파일로 css 분리하기
-
-- 가독성 좋아요.
-- 재활용 좋아요.
-- 일반적으로 활용해요.(무조건 추천)
-- ex) css/common.css(확장자는 무조건 파일명.css)
-
-```html
-<link rel="stylesheet" href="./css/common.css" />
-
-body{ background : "green" }
-```
-
-### 1.4. css에 css 파일 불러들여서 관리하기
-
-- 대표적으로 글꼴을 @import 해서 사용
-
-- import는 글꼴 불러올 때 쓴다.(다른것도 있다고 하심.)
-
-```html
-리액트에선 이렇게 함. import "./css/common.css" @import
-url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap");
-body{ background: green; }
-```
-
-- 참고사항
-  : 프로그래밍 언어는 문장의 끝을 표현한다. `;` 으로
-
-## 2. css 초기화 하기
-
-### 2.1. 선택을 하자. (코딩 컨벤션)
-
-- Normalize.css (https://necolas.github.io/normalize.css/8.0.1/normalize.css)
-  _ 자유도가 떨어진다.
-  _ 추가할게 적어진다.
-- reset css (https://meyerweb.com/eric/tools/css/reset/reset.css)
-  _ 자유도가 보장된다.
-  _ 대신 조금 추가해야한다.
-
-- 우리가 만든 common.css 도 링크하자.
-  : 꼭 기억하자. `box-sizing: border-box;`
-  : 필요 시 `outline-style: none;`
-- 정말 중요한 것은 css 코드 배치 순서
-- 웹브라우저에선(개발자 도구 확인) > 아래에서 위로 읽어 들인다.
-- 정말 중요한 것은 css 코드 배치 순서(stylesheet 링크 순서도 중요{무조건 적용해야 된다면 밑으로 내려야함})
-  : html 태그 > .class > #id의 순서로 적용됨
-  : 만약 같은 종류라면 작성 순서 기준
-  : 가장 우선시 한다면 `!important`
+### 2.1. 범위 안쪽에 있는 태그 찾기
 
 ```css
-<link rel="stylesheet" href="./css/reset.css" />
-<link rel="stylesheet" href="./css/common.css" />
+/* 앞에 class에 children 중 img태그를 찾아라 css에선 공백은 범위 */
+.header-logo-slide img {
+  ....;
+}
+
+.header-logo-slide img a {
+  ....;
+}
 ```
 
-- 공기관 사이트는 tap키 건드리지마라
-- border box까지 합해서 width / height 잡아줌
+### 2.2. flex 기초(외우자 중요)
 
-## 3. css 로 전체 레이아웃에 적용해 보기
-
-### 3.1. 멘토 및 실무자는 반드시 반응형을 봅니다.
-
-- 큰화면에서 점차 작은 화면의 레이아웃을 작업한다.
-
-- 화면(디바이스) 너비 관례상 기준
-  : 기본 화면(1280px 이상)을 먼저 작업한다.
-
-  ```css 반응형 기본형은 아래것만 들어가면됨.
-  .wrap {
-    width: 95%;
-    max-width: 1280px;
-   - 중앙정렬
-    margin: 0 auto;
-  }
-  ```
-
-  - 역피라미드 형식으로 작업해야한다.
-
-  : 랜탑 화면 (1024px) 화면의 레이아웃을 작업한다
-
-  ```css
-  @media screen and (max-width: 1024px) {
-  }
-  ```
-
-  : 타블렛 화면 (960px) 화면의 레이아웃을 작업한다
-
-  ```css
-  @media screen and (max-width: 960px) {
-  }
-  ```
-
-  : 고해상도 모바일 화면 (764px) 화면의 레이아웃을 작업한다
-
-  ```css
-  @media screen and (max-width: 764px) {
-  }
-  ```
-
-  : 중해상도 모바일 화면(480px)
-
-  ```css
-  @media screen and (max-width: 480px) {
-  }
-  ```
-
-  : 저해상도 모바일 화면(320px)
-
-  ```css
-  @media screen and (max-width: 320px) {
-  }
-  ```
-
-완성된 예
-: 랜탑 화면 (1024px) 화면의 레이아웃을 작업한다
+: container (상자) > 부모
 
 ```css
-.wrap {
-  width: 95%;
-  max-width: 1280px;
-  margin: 0 auto;
-}
-@media screen and (max-width: 1024px) {
-}
-@media screen and (max-width: 960px) {
-}
-@media screen and (max-width: 764px) {
-}
-@media screen and (max-width: 480px) {
-}
-@media screen and (max-width: 320px) {
+.header-logo-link {
+  display: flex;
+  /* 세로 중앙 */
+  align-items: center;
+  /* 가로 왼쪽 정렬 */
+  justify-content: flex-start;
+  /* 가로 가운데 정렬 */
+  justify-content: center;
+  /* 가로 오른쪽 정렬 */
+  justify-content: flex-end;
+  /* 가로 양쪽 균등 정렬 */
+  justify-content: space-between;
+  justify-content: space-around;
 }
 ```
+
+: item (요소들) > 자식
+:
+
+- 블록 / 인라인
