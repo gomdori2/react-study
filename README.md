@@ -12,9 +12,16 @@
 
 - 가독성이 떨어진다.
 - class로 관리 x 할 시 재사용 불가능
+- 리액트에선 의외로 많이 쓴다.
+
+- 퍼블리셔 기준으로는 중요 x
 
 ```html
 <body style="background:green"></body>
+
+리액트에선 > 삼항연산자를 사용한다.
+<body style={ 결과 ? {"background:green"} : {"background:red"} }></body>
+
 ```
 
 ### 1.2. `<style>` 태그 활용 하기
@@ -22,7 +29,7 @@
 - 가독성은 좋다.
 - css 코드 재활용은 힘들다.
 - 선택자 { css 적용 }
-- css Selector { css 적용 }
+  \_ css Selector { css 적용 }
 
 ```html
 <style>
@@ -30,6 +37,9 @@
     background: hotpink;
   }
 </style>
+리액트 const bodyCss ={ background : "hotpink" }
+
+<body style="{bodyCss}"></body>
 ```
 
 ### 1.3. 외부 파일로 css 분리하기
@@ -41,6 +51,8 @@
 
 ```html
 <link rel="stylesheet" href="./css/common.css" />
+
+body{ background : "green" }
 ```
 
 ### 1.4. css에 css 파일 불러들여서 관리하기
@@ -50,7 +62,7 @@
 - import는 글꼴 불러올 때 쓴다.(다른것도 있다고 하심.)
 
 ```html
-@import
+리액트에선 이렇게 함. import "./css/common.css" @import
 url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap");
 body{ background: green; }
 ```
@@ -68,6 +80,7 @@ body{ background: green; }
 - reset css (https://meyerweb.com/eric/tools/css/reset/reset.css)
   _ 자유도가 보장된다.
   _ 대신 조금 추가해야한다.
+
 - 우리가 만든 common.css 도 링크하자.
   : 꼭 기억하자. `box-sizing: border-box;`
   : 필요 시 `outline-style: none;`
@@ -90,18 +103,21 @@ body{ background: green; }
 
 ### 3.1. 멘토 및 실무자는 반드시 반응형을 봅니다.
 
-- 점차 작은 화면의 레이아웃을 작업한다.
+- 큰화면에서 점차 작은 화면의 레이아웃을 작업한다.
 
 - 화면(디바이스) 너비 관례상 기준
   : 기본 화면(1280px 이상)을 먼저 작업한다.
 
-  ```css 기본형은 아래것만 들어가면됨.
+  ```css 반응형 기본형은 아래것만 들어가면됨.
   .wrap {
     width: 95%;
     max-width: 1280px;
+   - 중앙정렬
     margin: 0 auto;
   }
   ```
+
+  - 역피라미드 형식으로 작업해야한다.
 
   : 랜탑 화면 (1024px) 화면의 레이아웃을 작업한다
 
