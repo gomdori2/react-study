@@ -266,3 +266,9 @@ background-size: cover;
   smtp 는 simple mail transfer protocol(이메일 보낼 때)
 
 - 서버 란 24시간 동안 안꺼지는 컴퓨터 에요.
+
+- 기본형(primitive)
+
+  - number, string, boolean, null, undefined, symbol(유일한값 / 절대로 중복되지 않는 값)
+
+    복잡한것(묶은것 : 기본형들을 모아서 활용) : object
