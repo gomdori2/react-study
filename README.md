@@ -201,3 +201,68 @@
 - 초기 디자인 및 css 작업은 글꼴에 대한 협의가 끝나고 진행한다. (1순위)
 - [구글폰트](https://fonts.google.com/?query=inter) 검색 > [눈누](https://noonnu.cc/) 검색
 - 존재 하지 않는 경우 직접 폰트 생성진행
+
+# main 영역 html , css
+
+## 1. html
+
+- 레이아웃을 공통적용을 위해서 inner div 작성(header 처럼)
+- main-top 과 main-bottom 을 inner 안쪽으로 배치
+- main-top 클래스에 왼쪽, 오른쪽 영역 잡기
+
+## 2. css
+
+- 화면의 너비 즉, vw 를 이용해서 높이에 반영
+- `보여줄 너비 / 화면의 너비 \* 100 = 결과%`
+- `보여줄 높이 / 화면의 너비 * 100 = 결과vw`
+
+- 모서리를 둥글게
+  : `border-radius : 20px`
+- 내용 일부 가리기
+  : `overflow:hidden`
+
+- 배경에 이미지 넣기
+  : 그림깔고 내용 위치잡기
+
+```css
+.main-top-banner a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  /* 이미지 넣기 */
+  background-image: url("../images/br.png");
+  /* 영역을 꽉채워라 */
+  background-size: contain;
+  /* 반복 x */
+  background-repeat: no-repeat;
+  /* 중앙으로 가라. */
+  background-position: center;
+}
+```
+
+```css
+background: url("../images/br.png") no-repeat center;
+background-size: cover;
+```
+
+## 0. 배포하기
+
+## 0. 배포하기
+
+1. https://www.dothome.co.kr/ 가입하기
+2. 홈에서 웹호스팅에서 무료 호스팅
+3. 상세보기 > 신청하기
+4. 정보 작성
+5. 파일질라 설치 (백신 좀 설치 X)
+6. 파일질라 실행
+7. 아이디/비번 등록하기
+
+- [파일질라](https://filezilla-project.org/)
+- [무료웹호스팅](https://www.dothome.co.kr/)
+
+- 통신 프로토콜(약속 : 규약)
+  http 또는 https 는 웹브라우저 주소(html을 보여줄 때)
+  ftp 는 file(file Transfer Protocol) 이 있는 곳(file을 보여줄 때)
+  smtp 는 simple mail transfer protocol(이메일 보낼 때)
+
+- 서버 란 24시간 동안 안꺼지는 컴퓨터 에요.
