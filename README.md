@@ -272,3 +272,58 @@ background-size: cover;
   - number, string, boolean, null, undefined, symbol(유일한값 / 절대로 중복되지 않는 값)
 
     복잡한것(묶은것 : 기본형들을 모아서 활용) : object
+
+- 여러 문장으로 연결된 경우의 글자는 <p>태그를 쓰자
+- 단어를 작성하는 경우는 span 태그 쓰자
+
+- 굵은 글자를 쓸때는
+  <b> 태그를 쓰자
+
+- 강조하고 싶은 글자는 strong
+  <strong> 태그를 쓰자
+
+- 기울임 글꼴을 쓸때는 italic
+  <i>
+
+- 한줄 내림 필수태그
+  <br/>
+
+웹브라우저는 a (anchor) 태그라면
+기본적으로 파랗게, underline 으로
+클릭이 가능해요. css 없이 표현 가능
+
+display : inline 은 가로로 글자처럼 배치된다.
+
+- 너비 / 높이 못준다.
+- 마진, 패딩 일부만 들어감.
+- 대표 태그
+
+  - a, img span, b, strong, i
+
+- word-break : 단어를 기준으로 잘라라.
+
+  - 규칙 없는 게 규칙, 카카오브레인 미니컨을 소개합니다 🙌
+
+- flex 를 활용 시 참고사항
+  : 기본적으로 flex 를 적용하면 줄내림은 없다.
+
+```css
+.box {
+  display: flex;
+
+  flex-wrap: nowrap;
+}
+```
+
+: 필요 시 100% 넘는 item 들이 있으면 줄내림 하려면
+
+    ```css
+
+.box {
+display: flex;
+flex-wrap: nowrap;
+}
+
+```
+
+```
