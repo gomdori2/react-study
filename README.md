@@ -259,6 +259,7 @@ background-size: cover;
 
 - [파일질라](https://filezilla-project.org/)
 - [무료웹호스팅](https://www.dothome.co.kr/)
+- [Beyond compare](https://www.scootersoftware.com/)
 
 - 통신 프로토콜(약속 : 규약)
   http 또는 https 는 웹브라우저 주소(html을 보여줄 때)
@@ -298,7 +299,7 @@ display : inline 은 가로로 글자처럼 배치된다.
 - 마진, 패딩 일부만 들어감.
 - 대표 태그
 
-  - a, img span, b, strong, i
+  - a, img, span, b, strong, i
 
 - word-break : 단어를 기준으로 잘라라.
 
@@ -317,13 +318,35 @@ display : inline 은 가로로 글자처럼 배치된다.
 
 : 필요 시 100% 넘는 item 들이 있으면 줄내림 하려면
 
-    ```css
-
+```css
 .box {
-display: flex;
-flex-wrap: nowrap;
+  display: flex;
+  flex-wrap: nowrap;
 }
-
 ```
 
-```
+- 효과 CSS3
+  : [css box-shadow generator 검색](https://cssgenerator.org/box-shadow-css-generator.html)
+  : [css filter](https://developer.mozilla.org/en-US/docs/Web/CSS)
+  : transition 기본형
+
+  - `transition : 속성명 시간초 시간효과 지연시간`
+
+  ```css
+  transition: width 0.5s, ease-in(가속도), background 0.5s;
+
+  .list-box:hover .list-box-img {
+    filter: drop-shadow(0px 25px 25px rgb(0 0 0 / 0.2));
+    transform: translateY(-10px);
+  }
+
+  .list-box-img {
+    width: 100%;
+    overflow: hidden;
+    height: 17.09vw;
+    max-height: 200px;
+    margin-bottom: 24px;
+
+    transition: all 0.2s ease-in;
+  }
+  ```
