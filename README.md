@@ -1,27 +1,82 @@
-# footer 작업
+# CSS 최적화 - > 일단 나중에
 
-[XE아이콘](https://xpressengine.github.io/XEIcon/library-2.3.3.html)
+# js Syntax 1장
+
+### **인터프리터**(interpreter, [문화어]: 해석기/ 번역기)[WIKI백과]
+
+- 프로그래밍 언어의 소스 코드를 바로 실행하는 컴퓨터 프로그램 또는 환경을 말한다.
+- 그때 그때 기계어로 번역해주는거.
+- 번역기 ex) 갤럭시 AI/웹브라우저
+  - 웹브라우저가 번역해서 실행
+
+### 컴파일러는 되있는것을 번역
+
+의미는 코드의 실질적인 기능/작업
+
+### 프로그래밍
+
+- 0과 1밖에 알지 못하는 기계가 실행할 수 있는 정도로 정확하고 상세하게 요구사항을 설명하는 작업이며 그 결과물이 바로 코드이다.
+- 요구사항을 분석하고, (개인별로 작성 : 의사코드)
+  Syntax 를 이용해서
+  적절한 자료구조 + 적절한 함수를 활용하고,
+  흐름을 제어하여 요구사항을 만족 시킨다.
+
+### 자연어
+
+- 사람이 쓰는 언어
+
+### 기계어
+
+- 컴퓨터가 쓰는 언어
+
+### Syntax(구문)
+
+- 약속된 문법
+
+### **Semantics(의미)**
+
+# js Syntax 코드 위치
+
+1. inline 방식
 
 ```html
-<link
-  rel="stylesheet"
-  href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css"
-/>
-<ul class="sns-list">
-  <li>
-    <a href="" class="xi-linkedin"></a>
-  </li>
+    <div onclick="alert("안녕");"></div>
+```
 
-  <li>
-    <a href="" class="xi-youtube-play"></a>
-  </li>
+2. 태그 방식
 
-  <li>
-    <a href="" class="xi-github"></a>
-  </li>
+```html
+<head>
+  <script>
+    alert("반가워");
+  </script>
+</head>
+```
 
-  <li>
-    <a href="" class="xi-facebook"></a>
-  </li>
-</ul>
+3. 외부파일 방식
+
+- 태그 방식으로 잡았을 경우 내부에 있는 script를 덮어쓴다.
+
+```html
+<script src="./js/script.js">
+    // 실행안됨.
+  alert("반가워");
+</script>
+```
+
+# Swiper Slide 적용해 보기
+
+- Slide 를 직접 코딩하지 마세요.
+- 사용법을 배운다.
+
+- Swiper, Slick, BxSlider 가 있다.
+
+## 1. Swiper 슬라이드 적용 시 주의 사항
+
+- html 로드 완료 및 이미지 로드 완료 후 실행 권장
+
+```js
+window.addEventListener("load", function () {
+  // 실제 슬라이드 코드 배치하자.
+});
 ```
