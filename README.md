@@ -1,1120 +1,487 @@
-# CSS 최적화 - > 일단 나중에
-
-# js Syntax 1장
-
-### **인터프리터**(interpreter, [문화어]: 해석기/ 번역기)[WIKI백과]
-
-- 프로그래밍 언어의 소스 코드를 바로 실행하는 컴퓨터 프로그램 또는 환경을 말한다.
-- 그때 그때 기계어로 번역해주는거.
-- 번역기 ex) 갤럭시 AI/웹브라우저
-  - 웹브라우저가 번역해서 실행
-
-### 컴파일러는 되있는것을 번역
-
-의미는 코드의 실질적인 기능/작업
-
-### 프로그래밍
-
-- 0과 1밖에 알지 못하는 기계가 실행할 수 있는 정도로 정확하고 상세하게 요구사항을 설명하는 작업이며 그 결과물이 바로 코드이다.
-- 요구사항을 분석하고, (개인별로 작성 : 의사코드)
-  Syntax 를 이용해서
-  적절한 자료구조 + 적절한 함수를 활용하고,
-  흐름을 제어하여 요구사항을 만족 시킨다.
-
-### 자연어
-
-- 사람이 쓰는 언어
-
-### 기계어
-
-- 컴퓨터가 쓰는 언어
-
-### Syntax(구문)
-
-- 약속된 문법
-
-### **Semantics(의미)**
-
-# js Syntax 코드 위치
-
-1. inline 방식
-
-```html
-    <div onclick="alert("안녕");"></div>
-```
-
-2. 태그 방식
-
-```html
-<head>
-  <script>
-    alert("반가워");
-  </script>
-</head>
-```
-
-3. 외부파일 방식
-
-- 태그 방식으로 잡았을 경우 내부에 있는 script를 덮어쓴다.
-
-```html
-<script src="./js/script.js">
-    // 실행안됨.
-  alert("반가워");
-</script>
-```
-
-# Swiper Slide 적용해 보기
-
-- Slide 를 직접 코딩하지 마세요.
-- 사용법을 배운다.
-
-- Swiper, Slick, BxSlider 가 있다.
-
-## 1. Swiper 슬라이드 적용 시 주의 사항
-
-- html 로드 완료 및 이미지 로드 완료 후 실행 권장
-
-```js
-window.addEventListener("load", function () {
-  // 실제 슬라이드 코드 배치하자.
-});
-```
-
-## swiper
-
-1. ??
-2. 호환되는게 많음(react, vue...)
-3. 반응형 지원된다.
-
-# Swiper Slide 적용해 보기2
-
-- 데모사이트의 core 메뉴를 통해서 참조한다.
-- 기본 css 와 js 파일은 CDN 으로 참조한다.
-
-```html
-<!-- Swiper -->
-<link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
-/>
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-```
-
-- 기본형 코드를 작성해서 원하는 영역에 배치한다.
-
-- 슬라이드 개수 만큼 swiper-slide div 를 만든다.
-
-```html
-<div class="swiper 이름">
-  <div class="swiper-wrapper">
-    <div class="swiper-slid"></div>
-    <div class="swiper-slid"></div>
-    <div class="swiper-slid"></div>
-    <div class="swiper-slid"></div>
-  </div>
-</div>
-```
-
-- css 로 `원하는 이름` 을 찾아서 width, height 를 100% 주자.
-- css 로 `원하는 이름` 에 절대로 display 등을 넣으면 안되요.
-  - **너비 높이 외에는 주면 안됨.**
-
-# 3. Swiper Slide 적용해 보기
-
-- 외부 데이터 연동(json)
-
-- 데이터 구조를 설계
-
-- 목업데이터/더미데이터 : 테스트용 가짜데이터
-
-- json이란 javaScript Object Notation 입니다.
-
-```json
-[
-  { "키": 값, "키": 값, "키": 값, },
-  { "id": 2, "pic": "b2.png", "url": "#" },
-  { "id": 3, "pic": "b3.png", "url": "#" },
-  { "id": 4, "pic": "b4.png", "url": "#" }
-]
-
-```
-
-# 4. Swiper Slide 적용해 보기
-
-- 비동기 호출하기((vanila/pure) js -> 추후 j-Query)
-  : BE 와 협업 시 활용합니다.
-- fetch 를 활용 가능
-- async await 활용 가능
-- 인터넷에서 주고 받고 하는 것은 문자열(string)입니다.
-  - 작은 문자열 단위 토큰(token)이라 한다.
-
-총 개수를 아는 경우라면 ?
-배열은 배열명.length 를 통해 총 요소(element)수를 알 수 있다.
-
-총 개수를 모르는 경우라면 ?
-
-# 5. Swiper Slide 적용해 보기
-
-- 외부 js 파일을 이용한다
-
-```html
-<head>
-  <script src="./js/topslide.js"></script>
-</head>
-```
-
-```js
-window.addEventListener("load", function () {
-}
-```
-
-- swiper 에 보여줄 데이터를 외부 .json 파일로 연동한다.
-  : 자료(데이터)를 만들어주는 동료가 BackEnd 입니다
-  : BE 와 협의가 필요하다. (협업의 기본)
-  : 초기에는 가짜데이터(Dummy, Mockup) 을 가지고 작업
-
-`json 파일 내용 형식`
-
-```json
-[
-  { "키명": "키값" },
-  { "키명": "문자열값" },
-  { "키명": 55 },
-  { "키명": true },
-  { "키명": [] },
-  { "키명": {} }
-]
-```
-
-```json
-[
-  {
-    "id": 1,
-    "pic": "b1.png",
-    "url": "#",
-    "title": "AI 헬스케어의 <br/> 마일스톤을 찍다"
-  },
-  {
-    "id": 2,
-    "pic": "b2.png",
-    "url": "#",
-    "title": "카카오브레인의 <br/> 연구문화"
-  },
-  {
-    "id": 3,
-    "pic": "b3.png",
-    "url": "#",
-    "title": "PathFinder 2기의 <br/> 언어모델 활용기"
-  },
-  {
-    "id": 4,
-    "pic": "b4.png",
-    "url": "#",
-    "title": "칼로리의 꿈 <br/> 시리즈 ③"
-  }
-]
-```
-
-- json 데이터를 이용해서 자료를 추출한다.
-  : 외부 주소를 통해서 자료를 불러들이기 위해 fetch 를 알고 적용한다.
-  : 더불어서 크롬 개발자 도구 (F12) 의 NetWork 탭을 알아야 한다.
-  : 옵션으로 fetch/XHR을 선택할 수 있어야 한다.
-  : request 와 response 를 구별하여 파악할 수 있어야 한다.
-
-### fetch 기본구조
-
-```js
-fetch(주소).then().then().catch();
-```
-
-1.
-
-```js
-fetch(주소).then(결과 =>{
-  접속결과;
-}).then((result) => {
-  받아온 값
-}).catch();
-```
-
-2.
-
-```js
-fetch(주소)
-  .then((결과) => {
-    // 위에 매개변수
-    const 접속결과 = 결과.json();
-    return 접속결과;
-  })
-  .then((최종자료) => {
-    // 하고 싶은 일 마음대로...
-  })
-  .catch();
-```
-
-3.
-
-```js
-fetch(주소)
-  .then((결과) => {
-    // 위에 매개변수
-    const 접속결과 = 결과.json();
-    return 접속결과;
-  })
-  .then((최종자료) => {
-    // 하고 싶은 일 마음대로...
-    // 우리가 할 일을 진행한다.
-  })
-  .catch((오류) => {
-    오류처리;
-  });
-```
-
-- 추출된 데이터로 html 을 생성한다.
-  : 백틱(``)을 적극적으로 사용한다.
-- swiper 를 작동시킨다.
-
-```js
-window.addEventListener("load", function () {
-  // 1. 외부에서 자료를 불러온다.
-  const dataUrl = "./apis/topslide.json";
-
-  fetch(dataUrl)
-    .then((response) => {
-      // Step 1. 자료 받아서 json 변경하기
-
-      // 이 문장은 변경 X
-
-      // json은 내려온 데이터를 문자열(토큰) 배열로 바꿈.
-      // 자바스크립트의 문법(syntax)로 바꿔서 해준다.
-      const data = response.json();
-      //   console.log(response);
-      // 변환된 결과를 돌려주기
-      return data;
-    })
-    .then((result) => {
-      // Step 2. json 변경된 데이터 활용하기.
-      // 전체 글자 모음
-      let slideTags = "";
-
-      for (let i = 0; i < result.length; i++) {
-        const data = result[i];
-        console.log(data);
-
-        // 템플릿 문법(``) 필요
-        const aaa = `<div class="swiper-slide">
-                            <a href="${data.url}" style="background : url('./images/${data.pic}') no-repeat center; background-size : cover;">
-                                <p class="slide-title">
-                                    ${data.title}
-                                </p>
-                            </a>
-                        </div>`;
-        slideTags += aaa;
-      }
-      // 원하는 장소에 출력해 보자.
-      // 2. 자료를 이용해서 슬라이드에 배치할 html 을 만든다.
-      const whereTag = document.querySelector(".topslide .swiper-wrapper");
-      whereTag.innerHTML = slideTags;
-
-      // 3. html 완성 후 swiper 를 생성한다.
-      // 기본코드를 넣어보자
-
-      var topSlide = new Swiper(".topslide", {});
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-});
-```
-
-# 6. Swiper Slide 적용해 보기
-
-- 옵션(https://swiperjs.com/demos#autoplay)
-  : loop
-  : autoplay
-  : effect
-  : speed
-  : pagenation(https://swiperjs.com/demos#pagination)
-  : 페이지네이션 디자인 참조.
-
-# js 4장
-
-- var 변수명 = 변수값;
-- let 변수명 = 변수값;
-- const 변수명 = 변수값;
-
-```txt
- 호이스팅(hoisting) 은 변수, 함수를 선언하지 않았는데도 사용할 수 있음. (hoisting 이 일어나지 않도록 주의 : var 쓰지 말자)
-```
-
-# css 의 opacity 와 position 의 이해.
-
-- opacity 는 DOM의 내용까지도 투명도가 적용된다.
-
-```css
-대상 {
-  position: relative;
-}
-대상 {
-  position: absolute;
-}
-대상 {
-  position: fixed;
-}
-```
-
-```html
-<div class="box-wrap">
-  <div class="box"></div>
-</div>
-```
-
-```css
-.box-wrap {
-  position: relative;
-  margin: 0 auto;
-  width: 600px;
-  height: 300px;
-  background: orange;
-}
-.box {
-  position: absolute;
-  right: 80px;
-  bottom: 20px;
-
-  width: 200px;
-  height: 200px;
-  background: red;
-}
-```
-
-position
-: position 중에 absolute 로 픽셀 위치 설정의 경우 주의
-: 반드시 position 코드가 바깥 영역에도 있어야 합니다.
-: position 중에 fixed 는 웹브라우저를 기준으로 배치
-: fixed 는 반드시 left, top, right, bottom 을 주자
-: fixed 는 보통 z-index 를 준다.
-: fixed 는 높이에 반영이 안되므로 주의하자.(레이아웃 배치 문제)
-
-# js 윈도우 스크롤의 위치를 알아내기
-
-```js
-window.addEventListener("load", () => {
-  // 브라우저의 스크롤바의 위치를 파악해야함
-  // 현재 스크롤바의 위치값 알아내기
-  let scY = this.window.scrollY;
-  // scY 즉, 스크롤바의 위치가 0 보다 크면 스크롤 된거다.
-  // header 에 라인의 css 를 적용한다.
-  const header = document.querySelector(".header");
-  if (scY > 0) {
-    // header 객체, 즉, DOM 에 css 목록에 추가 하자 (class명)
-    header.classList.add("line-active");
-  } else {
-    // header 객체, 즉, DOM 에 css 목록에 제거 하자 (class명)
-    header.classList.remove("line-active");
-    // header.classList.toggle("line-active");
-    // header.classList.contains("line-active");
-  }
-
-  window.addEventListener("scroll", () => {
-    // 스크롤 했을 경우에 스크롤바의 위치값 알아내기
-    scY = window.scrollY;
-    if (scY > 0) {
-      header.classList.add("line-active");
-    } else {
-      header.classList.remove("line-active");
-    }
-  });
-});
-```
-
-# js 로 css의 클래스 동적으로 활용하기
-
-```js
-// dom 찾아서 변수로 레퍼런스 하기
-
-if (scY > 0) {
-  // header 객체, 즉, DOM 에 css 목록에 추가 하자 (class명)
-  header.classList.add("line-active");
-} else {
-  // header 객체, 즉, DOM 에 css 목록에 제거 하자 (class명)
-  header.classList.remove("line-active");
-  // header.classList.toggle("line-active");
-  // header.classList.contains("line-active");
-}
-// dom 을 이용해서 선택한 곳에 적용된 css 클래스 목록
-
-const tags = document.querySelector(".클래스명");
-// header 객체, 즉, DOM 에 css 목록에 제거 하자 (class명)
-// 추가
-tags.classList.add("line-active");
-// 삭제
-tags.classList.remove("line-active");
-// 있으면 x 없으면 넣기
-tags.classList.toggle("line-active");
-// 포함여부
-tags.classList.contains("line-active");
-```
-
-# js의 함수란? 1번
-
-- function은 웬만하면 동사로 짓자
-
-```js
-// 함수만들기(함수 선언)
-function 적절한동사(매개변수){
-  하고싶은일 작성
+// git 협업
+
+1. 카카오가치같이 팀 협업
+
+- 프로젝트 명 > 폴더 생성
+  : TypeScript 로 프로젝트 생성 > 권장사항
+  : npx create-react-app ./ --template typescript
+
+- 팀장이 협의하에 기본형을 생성한다.
+- 기본형 생성 후 GitHub 에 저장소 생성한다.
+- 팀원은 GitHub 주소를 공유 받는다
+- 팀원은 공유받은 주소에 가서 fork 를 받는다.
+- 팀원은 본인의 주소로 가서 fork 주소를 확인한다.
+- 팀원은 PC 에 fork 한 주소를 클론한다.
+- 팀원은 PC 에서 브랜치를 생성한다.
+- 팀원은 PC 에서 브랜치로 이동한다.
+- 팀원은 PC 에서
+- 팀원은
+- 팀원은
+- 팀원은
+- 팀원은
+
+# JS 12 장
+
+원시데이터 ===> 값
+복합데이터 : 복잡한 속성, 메서드를 가진 객체 ===> function, [], {}.
+
+"함수(값)는 객체의 문법을 따르는 값이다." >
+
+function 함수이름(매개 변수){
+return 문장을 작성 (값을 `반드시` 출력 : 표현식!!)
 }
 
-// 함수사용하기(함수호출)
-적절한동사();
-// 예(함수 체이닝)
-// 연결고리
-fetch().then().then().catch();
-```
-
-- 함수는 무조건 1개의 값을 리턴하도록 규정되어 있습니다.
-  - 리턴이라는 것은 함수 실행() 후 값을 돌려주는 것을 말합니다.
-
-```js
-function 함수명() {
-  // 아무것도 작성안하면 return undefined;
-  // return undefined;
-}
-함수명();
-```
-
-- 동일한 코드가 2번 이상 반복되면 함수를 만들려고 노력하자.
-- 반복은 되지 않더라도 하나의 기능이 너무 복잡하면 함수를 만들려고 노력하자.
-- 복잡하지는 않는데 코드가 너무 길어지면 함수로 묶어주려고 노력하자.
-- 실행의 결과가 그때, 그때 다른 경우에도 함수를 만들자.
-- 함수 정의 문
-
-```js
-function 함수이름() {
-  // 할일
-}
-```
-
-- 함수 실행/호출(call) 문
-
-```js
-함수이름();
-```
-
-# 리스트 영역에 json 활용해 보기.
-
-# js 5장
-
-# js 1번 리팩토링 ? 2번
-
-```js
-window.addEventListener("load", () => {
-  // 브라우저의 스크롤바의 위치를 파악해야함
-  // 현재 스크롤바의 위치값 알아내기
-  let scY = 0;
-
-  // function은 웬만하면 동사로 짓자
-  // scY 즉, 스크롤바의 위치가 0 보다 크면 스크롤 된거다.
-  const header = document.querySelector(".header");
-
-  // 변경되는 css 클래스명
-  const headerActiveClass = "line-active";
-
-  // 클래스가 적용되는 최소 높이값
-  const headerActiveValue = 0;
-
-  // 매개변수로 받기에는 문제가 하나있다.
-  const showLine = () => {
-    // header 에 라인의 css 를 적용한다.
-
-    scY = this.window.scrollY;
-
-    if (scY > headerActiveValue) {
-      // header 객체, 즉, DOM 에 css 목록에 추가 하자 (class명)
-      header.classList.add(headerActiveClass);
-    } else {
-      // header 객체, 즉, DOM 에 css 목록에 제거 하자 (class명)
-      header.classList.remove(headerActiveClass);
-      // header.classList.toggle("line-active");
-      // header.classList.contains("line-active");
-    }
-  };
-  showLine();
-  document.addEventListener("scroll", () => {
-    showLine();
-  });
-});
-```
-
-# js 의 함수의 매개변수란 ? 3번
-
-- 초기 기능 즉, 함수를 정의하기 전에 기능 상 자주 변하는 데이터를 고민한다.
-- 기능은 스크롤 시 특정 위치 보다 커지면 css 추가하기
-- 이전 코드는 좋지 않은 코드라고 생각이 든다.
-- 함수는 스스로 지역 즉, Local 영역(scope) 에서 처리되는 것이 좋다고 봐요.
-- 처리라는 말은 변수를 찾는다 던가
-- 처리라는 잘못된 값이 전달되어서 오류가 나는 것을 방지하는 것을 말합니다.
-
-```js
-// 홍길동에게 줄 함수
-const a = 5;
-const b = 6;
-function 나누기(_num1, _num2) {
-  if (_num2 === 0) {
-    alert("나눗셈에서 0은 안됩니다.");
-  }
-  return _num1 / _num2;
-}
-
-나누기(a, b);
-```
-
-1. 완성을 목표로
-2. 고민 (함수)
-3. 고민 (함수 매개변수)
-
-- utils 폴더에다가 정리
-
-# js 6장
-
-데이터 타입(Data Type) : 자료의 종류(자료형)
-타입 이라는 말이 자료의 형태
-타입스크립트
-
-- 자료의 형을 설명하는 문법
-
-1. 데이터 타입 : js의 리터럴로 처리될 수 있는 자료의 종류
-2. js 에서는 값 리터럴에 따라 변수의 종류를 `타입추론` 한다.(암묵적 타입변경)
-3. ex) let a = 1; > js 는 1이 숫자 리터럴이라고 타입을 `추론` 한다
-   a = "안녕" 이라 하면 문자로 변경한다.
-   뭘 집어넣어도 애(js)가 알아서 타입을 지정해서 오류나 원했던 결과가 아닐수도 있다.
-   이러한 문제점을 해결하기 위해 나온게 `타입스크립트`
-   let a:number = 1;
-   a = "안녕";
-
-// 코딩 할 때 스스로 고민해 보자.
-
-1. 꼭 필요한 경우인지를 파악하고 변수를 만들자.
-2. 변수 유효범위는 좁게(block을 가능하면 쓰자)
-3. 전역 변수는 가능하면 만들지 말자.
-   ex) let a = 1; 전역변수 (bad)
-   {a = 2} 지역변수 (good)
-4. 변수보단 상수를 사용하자.
-   let > const
-5. 변수 이름을 명확하게 만들자.
-
-# 함수의 이해 7번
-
-1. 함수를 만들어야겠다고 판단하는 케이스
-
-- 동일한 코드가 2번 이상 반복되면 함수를 만들려고 노력하자.
-- 반복은 되지 않더라도 하나의 기능이 너무 복잡하면 함수를 만들려고 노력하자.
-- 복잡하지는 않는데 코드가 너무 길어지면 함수로 묶어주려고 노력하자.
-- 실행의 결과가 그때, 그때 다른 경우에도 함수를 만들자.
-
-2. 왜 화살표 함수를 만들지?
-
-- 기본구조 > const 명칭 = (매개변수) => {//할일}
-
-- 트렌드를 쫓아가자. (있어보이잖아요.)
-- 코드가 해석하기 더 어려워집니다.
-
-```js
-// 화살표 함수 연습
-steb 0.
-function say() {
-  console.log("안녕", this);
-}
-steb 1.
-say() => {
-  console.log("안녕", this);
-}
-steb 2.
-const say = () => {
-  console.log("안녕", this);
-}
-const say = () => {}
-```
-
-: 매개 변수가 있는 경우
-
-: steb 1.
-
-```js
-function say(_who) {
-  console.log("안녕", _who, this);
-}
-```
-
-: steb 2.
-
-```js
-const say = (_who) => {
-  console.log("안녕", _who, this);
-};
-```
-
-- this 를 정확히 지정하기 위해서 활용한다.
-  : 화살표 함수를 사용하면 일반적으로 큰 고민없이 사용하면 된다.
-  : 하지만, 함수 안에 this를 작성하시면 상황이 달라집니다.
-  : 일반 함수는 코딩된 자리, 적은부분에 상위개념을 찾아온다.
-  : 화살표 함수에서 this 는 window를 가리킵니다.
-  : 결론은 `화살표 함수에서 this 를 사용한다면` console.log(this) `*확인필수!`
-  : 화살표함수에서 this 조심하자.
-  : 컨텍스트 > 코딩된 자리
-  : window를 카리켜야한다면 arrow쓸 것
-  : 화살표 함수는 예전 `일반 함수에서 window 를 참조하지 못하는 문제`를 해결함.
-
-```js
-const btWrap = document.querySelector(".bt-wrap");
-btWrap.addEventListener("click", function () {
-  console.log(this);
-});
-btWrap.addEventListener("click", () => {
-  console.log(this);
-});
-```
-
-# 배열의 이해
-
-- 객체 > 일반객체
-- 배열객체
-- [요소,요소,요소,요소 ]
-  : 요소로 담을 수 있는 자료형은 7가지 입니다.
-- 배열의 속성(배열을 위한 특별한 변수)은 1개가 있습니다.
-  : length 가 있어요. (요소의 개수)
-- 배열의 메소드(배열을 위한 특별한 함수)는 너무 많아요.
-- 상당히 많은 메소드(배열을 위한 함수) 가 있습니다.
-- 배열.forEach((요소)=>{}), 배열.map((요소)=>{}), 배열.filter((요소)=>{}), 배열.find((요소)=>{})
-- 배열의 요소를 하나씩 접근해서 활용하기
-- 카멜케이스 사용해라(배열.forEach)
-
-```js
-result.forEach((item) => {
-        const tag = `<a href="${item.link}" class="list-box">
-        <div class="list-box-img br-20" style="background: url('./images/${item.imgpath}') no-repeat center; background-size: cover;"></div>
-        <div class="list-box-cate">
-          <img src="./images/icon/${item.icon}" alt="${item.category}">
-          <span style="color:${item.txtcolor};">${item.category}</span>
-        </div>
-        <p class="list-box-title">${item.title}</p>
-        <span class="lsit-box-day">${item.day}</span>
-      </a>`;
-```
-
-- 키값 이 일반 변수 인 경우와 (프로퍼티)
-
-  - 일반 변수
-    - 변수 (var, let, const)
-
-- 키값 이 함수 인 경우를 구분하고 표현한다.(메소드)
-
-  - function a(){} - 일반함수
-
-- 객체에 정의한 변수를 커뮤니케이션 하기 곤란하니까 이걸 속성(프로퍼티)이라고 호칭합니다.
-
-- 객체에 정의한 함수를 커뮤니케이션 하기 곤란하니까 이걸 메소드라고 호칭합니다.
-- 프로퍼티(객체 내부 키값), 속성
-  const a = {
-  a : 1, 프로퍼티(객체.속성)
-  b : function(){} 메소드(객체.기능)
-  }
-  일반 객체 변수(리터럴 객체)
-  const 객체 = {
-  property : value,
-  method : function(){}
-  }
-
-## js 7장
-
-operator (연산자)
-
-이 항 : 2개의 항목 을 처리하는 연산자 값만들기
-
-- a + b = c
-  삼 항 : 3개의 항목 을 처리하는 연산자 값만들기
-- (조건식) ? 참 실행 : 거짓 실행
-  단 항 : 1개의 항목 을 처리하는 연산자 값만들기
-
-- - - / % (모듈러 연산자)
-
-5 % 3 = 2 (나누고 난 후 나머지 값, 게시판 목록..)
-
-    단  항   :   1개의 항목 을 처리하는 연산자 값만들기
-
-    let a = 1;
-    a = a + 1;
-    a++;    // 원 값에 1을 더하라
-    ++a;    // 원 값에 1을 더하라
-    --a;    // 원 값에 1을 빼라
-    a--;    // 원 값에 1을 빼라
-    for(let i = 0; i < 10; i++) {
-    }
-    장바구니 개수 추가
-    let bucket = 0;
-    bucket++;
-
-    알고리즘 공부
-    let a = 1;
-    let b = a++;   // b?  1   a = 2
-    let b = ++a;   // b? 2
-
-1 + 2 = 3
-'1' + 2 = "12"
-글자도 더할 수 있다.
-
-const filePath = "./images/"
-const fileName = ".jpg";
-for(let i = 0; i < 10; i++) {
-const img = filePath + i + fileName;
-const img = "./images/" + 0 + ".jpg";
-const img = "./images/" + 1 + ".jpg";
-const img = "./images/" + 2 + ".jpg";
-}
-
-    처음 코딩 배우면 어려워 하는 것
-
-    문법
-        []  ....
-        for  문....
-        할당 문...
-        let num = 0;
-        num = num + 1;
-        num ++;
-        num += 1;
-
-==================== 적절한 구조를 어떻게? ====
-변수, 함수, 객체 구조?
-
-1 == '1' 같다 (true)
-암묵적으로 타입 변환 시켜서 진행 : 나중에 오류의 원인
-절대로 사용하지 마세요.
-
-1 === '1' 다르다. 1. 먼저 데이터 종류 (data type) 비교합니다. 2. 데이터 값 (data value) 비교합니다.
-
-     !==
-
-
-
-     (조건) ? 참실행 : 거짓실행
-
-     (level > 10) ?  <div>주인님</div>    :   <div>일반회원</div>
-
-     if(isLogin) {
-
-        <div>"반가워"</div>
-
-     }else{
-
-        <div>회원가입</div>
-     }
-
-     const 객체 = {
-         프로퍼티명 : 프로퍼티값
-     }
-     객체 in 프로퍼티명
-     delete 객체.프로퍼티명;
-
-     const sw = new Swiper(".slide", {} )
-
-     const a = (1 + 10) * 100
-
-함수의 리턴(return 값 default : undefined)의 이해
-
-1. 함수 정의
-
-function 함수이름(매개변수) {
-// 직접 return 값; 미작성
-
-}; 2. 함수 호출
-const gogo = 이름(100); // gogo 에는 undefined;
-
-3. 리턴이 여러개인 경우
-   : return 의 의미는 함수 결과값 돌려주기
-   : return 은 함수 종료하기
-   function 함수이름(매개변수){
-   return 1;
-   return 2; // 영원히 실행 안됨.
+함수이름(인자) : 함수 호출, 함수 실행, 함수 콜...
+
+리터럴은 JS 가 알아먹을 수 있는 데이터 형태로 작성한 것
+const a = 1; 숫자 리터럴
+const add = function (){} > 함수는 객체 > 함수 리터럴
+
+JS 의 일급객체에 대해서 말해 보시오.
+함수가 일급 객체일까 ?
+
+1. 값처럼 변수에 할당할 수 있는가?
+   const add = function() {}
+2. 객체의 프로퍼티의 값으로 담을 수 있는가?
+   const obj = {add : function (){}} > 메서드
+
+3. 배열의 값으로 담을 수 있는가?
+   const arr = [1,2,3,function(){}, {}, []]
+4. 함수의 매개변수 값으로 전달할 수 있는가?
+   function 말해봐(기능){
+   // 함수는 객체의 값으로 쓰임.
+   // 그렇기 때문에 넘길 수 있다.
+   기능();
    }
+   const 안녕 = function(){}
 
-원래 swiper 의 영역은
-overflow : hidden이 되어 있습니다.
+   안녕(function (){console.log("안녕하세요")}) // 한번 사용하고 사용 X 시 함수 정의하고 쓰지말고 그냥 익명 써라
 
-- 영역 외는 잘라라
+함수 가 객체를 생성하는 함수를 객체 생성자 함수 라고 한다.
 
-if (화면의 너비가 1024 보다 작으면)
-{
-swiper 생성
+// 자바스크립트 엔진이 만든것.
+JS 의 함수에 전달되는 매개변수 목록을 arguments 라는 객체 라고 한다.
 
-} else {
-그렇지 않으면
-swiper 해제(깨버리기)
+1. {} > 객체 리터럴 변수에 할당
+
+2. object 함수 문법
+
+3. 생성자 함수 문법
+
+4. Object.create 함수 문법
+
+5. class 함수 문법
+
+- 함수의 매개변수로
+
+1. 원시 값을 인자로 전달하는 경우
+   const age = 15;
+   function grow(\_value){
+   return \_value + 5;
+   }
+   grow(age);
+
+age 는 얼마인가?
+
+age 는 변화가 없다.
+
+2. 객체를 인자로 전달하는 경우
+   const person = { age = 10, }
+
+function grow(\_who){
+\_who.age = 150;
 }
 
-현장에서 고객 및 기획자는 다양한 아이디어를 냅니다.
-그래서, 슬라이드도 반응형에 맞게 배치가 됩니다.
-기본은 css 로 레이아웃 처리
-1024 보다 작으면 swiper 생성 및 작동
-1024 보다 크면 swiper 제거한다.
+// 객체의 참조(주소) 값 전달
+grow(person); > 메모리 주소가 전달 되기 때문에 값이 변동됨.
 
-window.addEventListner("resize",function(){
+// 객체의 상태가 변경이 일어난다.
+// 예측하기가 곤란하다.
 
-})
+즉시 실행 함수
+(function(){
+실행할거.
+})();
 
-1. pc 와 mobile 에 가장 보기 좋도록 배치
-
-## js 8장
-
-```txt
-제어문은 조건에 따라 코드 진행 방향이 결정된다.
-
-고차함수 란?
-함수의 매개변수로 함수를 전달한다.
-글자, 숫자, boolean, null, undefined, symbol
-객체 : [], function, {} ...
-확률이 높은 조건을 먼저 조건으로 쳐라
-버스를 기다린다.
-
-300번은 5분마다 온다.
-
-700번은 10분마다
-if(조건){
-
-} else if (조건){
-
-} else {
-
+중첩 함수
+이런 구조
+function outer(){
+function inner() =>{}
+inner()
 }
 
-- forEach 메서드 : 배열을 순회할 때 사용
-- for in 문 : 객체의 프로퍼티를 열거할 때
-- for of 문 : 이터러블을 순회 가능
-```
+리액트에서는 클로저가 대부분이다.
+function outer(){ > rafce 구조
+const handelClick = () =>{}
+inner()
+return (jsx 구문)
+}
 
-# js 9장
+- 콜백 함수가
+  // window에 메서드를 콜 후 2번째 매개변수에 메서드를 콜백시킴.
+  window.addEventListener("이벤트", function(){
 
-명시적 타입 변환
+});
 
-- 개발자가 타입을 강제로 변환하는 것
-- 타입캐스팅
-  암묵적 타입 변환 (코드에러가 아니고 원하는 결과가 아닌 경우가 발생)
-- 개발자가 아닌 자바스크립트가 타입을 몰래 변환
-- 타입 강제 변환
-- 결과를 예측할 수 있어야 합니다.(대비책)
-- \+ 연산자는
-  - '글자' + '글자' = '글자'
-  - 숫자 + 숫자 = 숫자
-  - '글자' + 숫자 = '글자' 원칙(일단 글자로 바꿈)
-  - js는 html에 작성한 내용은 일단 글자로 받아드림
-    - ex) 회원가입 : 전화번호 이런것들
-- \- 연산자는
+// 함수
 
-  - '글자' - '글자' = NaN
-  - 숫자 - 숫자 = 숫자
-  - '글자' - 숫자 = 숫자 원칙(일단 숫자로 바꿈)
-  - console.log(typeof 결과)
+순수 함수 - 권장
 
-- Boolean true / false
-- Falsy(결과값이 false로 나오는 애들) 한 것들을 반드시 알아야해요
-  - if(!false)
-  - if(!undefined)
-  - if(!null)
-  - if(!0)
-  - if(!NaN)
-  - if(!'')
-
-문자열 데이터 지정 만들기
-변수 + '' 글자로 만들어짐
-
-숫자 데이터 지정 만들기
-parseInt(변수) : 정수 만들기
-parseFloat(변수) : 실수(소수) 만들기
-
-단축 평가
-: 리액트에서 엄청 사용한다.
-: 반드시 정말 알아야 합니다.
-
-- 논리곱(&&)
-
-  - true && true 결과는 true 입니다. > 이거 아니다
-  - "비욘세" && "디카프리오" 결과는 죄송하지만 true 가 아닙니다.
-    결과는 죄송하지만 "디카프리오" 이다.
-  - const isLogin = false;
-  - isLogin && "<div>안녕</div>"
-    - return (X)
-    - isLogin 이 true 일 때 return "<div>안녕</div>"
-  - 참 && 참2 > 일 경우 뒤에 참2를 리턴한다.
-
-- 논리합(||)
-  - true || true 결과는 ture 입니다.
-    - '10억' || '1원' // 10억
-    - '' || '1원' // 1원
-    - true1 || true2 true 일 경우 결과값이 앞에게 나옴.
-
-옵셔널체이닝 나오게 된 이유 (?.)
+- 외부에 영향을 끼치지 않는 함수
 
 ```js
-var elem = null;
-var result = elem.gogo; // 문법 에러
-//------------ 위는 Syntax에러로 전체 js가 멈춤 ------------//
-//------------ 아래는 괜찮음. ------------//
-var elem = null;
-var result = elem && elem.gogo; // 문법적으로 에러 안남.
-//------------ 업그레이드 ?버전 ------------//
-var elem = null;
-var result = elem?.gogo; // 문법적으로 에러 안남.
+ex)
+function add(a,b){
+	return a+b;
+}
 ```
 
-: Syntax 에러로 js가 멈추지 않기를 바란다.
+비순수 함수 - 권장 하지않음
 
-- 병합연산자(??)
-  - const result = null ?? "없군요" 결과값은 "없군요"
+- 외부에 영향을 받는 함수.
 
-# js 10 장 객체 리터럴
-
-- 너무 중요해요.
-  : 활용빈도 말도 안되게 높고,
-  : 본인 및 타소스를 이해하려면 알아야 해요.
-  : 핵심은 JS 의 모든 자료타입은 객체입니다.
-
-  - 타입(js가 리터럴로 인정하는 자료의 종류)
-
-  : 원시 타입
-  ( string, number, null, undefined, bool, symbol )
-
-  : 객체타입
-  ( [ 원시타입들... ] , { 속성명:원시타입 }, function .... )
-
-  - 객체 구성 ( 객체가 가진 데이터를 객체 내에서 제어하겠다.)
-
-  : 객체에 포함된 변수를 `프로퍼티/속성` 이라고 호칭
-  : 객체에 포함된 함수를 `메소드/기능` 이라고 호칭
-  const obj = {
-
-        "프로퍼티명" : 원시값 또는 다른 객체,
-        "프로퍼티명" : string,
-        "프로퍼티명" : [],
-        "프로퍼티명" : {},
-        "메소드명" : function () {},
-      }
-
-  - 객체 만드는 법
-    인스턴스 란 ?
-    : 남에게 말해주기가 어려운 개념
-    : `객체를 생성하는 방법을 활용` 해 생성한 변수를 인스턴스라고 한다.
-
-  1.  객체 리터럴 문법 : 활용빈도 높다. const 인스턴스 = {}
-
-  const 인스턴스 = {
-  "myName" : 5,
-  myJob : 5,
-  "my-age" : 5,
-  say : function () { this["my-age"] },
-  sayHi : () => { this["my-age"] },
-  }
-  인스턴스.myName
-  인스턴스["myJob"]
-  인스턴스.say()
-  인스턴스["say"]()
-  인스턴스.gogo = "안녕"
-
-      : 객체 리터럴 문법 보완 및 축약 (ES6)
-
-        // 기본형
-        const 인스턴스변수 = {
-          프로퍼티명: 프로퍼티값 ,
-          프로퍼티명: 프로퍼티값 ,
-          메소드명 : function() { },
-          메소드명 : function() { }
-        };
-
-        const age = 10;
-        const nickName = "홍길동";
-
-        // 외부 변수 전달 받는데    이름이 똑~~ 같다?
-        const person = {
-           age      : age,
-           nickName : nickName
-        };
-
-        //  축약형
-        const person = {age, nickName};
-
-        // 메소드 기본형
-        const person = {
-           say      : function() { }
-        };
-
-        // 메소드 축약형
-        const person = {
-           say() { }
-        };
-
-  2.  Object 함수 문법
-
-  3.  생성자 함수 문법 : 활용빈도 높다.
-
-  4.  Object.create 함수 문법
-
-  5.  class 함수 문법 : 활용빈도 높다.
-
-1. 팀장 및 팀원은 먼저 레이아웃 을 토의하고, 작업 및 담당자 영역을 나누고
-   css파일, js 파일을 각자 작업 후 git에 push 합니다.
-
-# 카카오 브레인 블로그 사이트
-
-- 반드시 저작권을 밝혀야 한다.
-- 어떤 화면이든 첫 화면만 연습 하면 됩니다. (첫 화면이 가장 어렵다)
-
-# js 11장 원시타입
-
-- const age = 1;
-
-const name = “hong”;
-
-const marry = false;
-
-const gogo = age;
-
-const hi = name;
-얕은복사 / 깊은복사 > 메모리 주소를 참조 / 값을 할당
-// 얕은 복사
-const who = {} 객체라서 값이 아니고 메모리주소 참조라 합니다.
-const you = who; 주소를 복사(얕은복사) > 참조 - 원본메모리 주소를 공유해서 둘다 변경가능하다.(얕은복사)
-얕게 허술하게 복사한다. 즉, 값을 복사가 아니고 장소, 주소 만 복사한다.
-
-// 깊은 복사
-const you = who.person; 주소를 복사(얕은복사) > 참조 - 원본메모리 주소를 공유해서 둘다 변경가능하다.(얕은복사)
-
-일반 값을 복사해서 변경한다.(깊은 복사)
-const 강의실 = "506호";
-const 교실 = 강의실; // 원시데이터 글자 들어감.
-강의실 = 5000; > 위에 강의실은 5000으로 바뀌지 않고 506호
-const 교실 = 강의실.번호; // 원시데이터 글자 들어감.
-
-참조 값을 복사해서 변경한다.(얕은 복사) - 메모리 주소를 참조하기 때문에 해당 메모리주소의 데이터를 찾아들어가 변경해버림
-
-- `중요` 얕은 복사말고 깊은복사 즉, 값을 복사해서 왔다갔다하게 해라.
-  const 강의실 = { 번호 : "506호" };
-  const 교실 = 강의실; // 원시데이터 글자 들어감.
-
-const 리액트반 = { member : 16}
-
-function 학생수(과정) {
-과정.member = 100;
+```js
+const age = 10;
+function add(a, b) {
+  return age + b;
 }
-학생수(리액트반) // 이렇게 쓰지마라
-학생수(리액트반.member)
-학생수({...리액트반}) > 각각을 다 뜯어서 새로 만들어
+```
 
-// 권장 사용방법
-const 리액트반 = {member : 16};
-const 과정 = {...리액트반};
-const 과정 = {member : 16};
+# js 13 장
 
-일반 변수는 `값이 보관되고 값이 복사`된다.
-객체 변수는 `주소가 보관되고 주소가 복사`된다.
-: 중요한 것은 `객체를 복사`하는 것은 주의하자.(얕은복사)
-: 가능하면 객체는 깊은복사(값을 복사)를 활용해라
+스코프(scope) : 대상을 사용할 때 어디를 찾을 범위
+
+- 대상 : 함수, 변수, 클래스 등...
+
+- var 변수
+
+- let 변수, 또는 const 변수가 차이가 큽니다.
+
+- 함수를 실행 할 때 내부에 그 변수가 있는지를 먼저 찾고
+  이후 전역으로 올라가서 찾는다
+
+```js
+// 설명으로 바깥쪽 (함수의 바깥쪽)
+// 통상 전역(global)스코프라고 합니다.
+var age = 15;
+
+function say() {
+  // 통상 `지역(local) 스코프` 라고 합니다.
+  console.log(age); // 지역 찾고 위에 전역에 있으니 전역변수를 가져옴
+
+  console.log(name); // undefined > 없으니
+}
+say(); // ?
+```
+
+```js
+// 설명으로 바깥쪽 (함수의 바깥쪽)
+// 통상 전역(global)스코프라고 합니다.
+var age = 15;
+
+function say() {
+  // 지역 스코프에 해당 변수가 있으면
+  // 따로 전역을 뒤져서 그걸 가져오지 않음.
+  var age = 100;
+  console.log(age);
+}
+say(); // ?
+```
+
+```js
+var var_1 = 1;
+if (true) {
+  var var_2 = 2;
+  if (true) {
+    var var_3 = 3;
+  }
+}
+function say() {
+  var var_4 = 4;
+}
+console.log(var_1); // var_1 찾고
+console.log(var_2); // var_1 찾고 > var_2 찾고
+console.log(var_3); // var_1 찾고 > var_2 찾고 > var_3 찾고
+console.log(var_4); // undefined 함수 내부에 있고 실행 x
+```
+
+렉시컬 환경(실행과 작성위치)
+
+JS는 레시컬 스코프를 기본으로 합니다.
+
+- js 는 대상이 코딩 즉, 작성할 때 스코프가 정해진다.
+- 즉, 그때 그때(실행 시) 스코프가 달라지지 않는다.
+
+코드 작성 시 > global
+
+```js
+   // 작성하는 순간에 지경을 잡음.
+age += 1; > global
+function say(){
+   // 내부에 적기 시작하면 내부로 스코프가 정해짐.
+   var id = "hong" // 지역
+}
+// global에서 실행
+say();
+```
+
+- 앞으로 살펴볼 내용 예습
+
+```js
+let age = 1; // 호이스팅 X
+if (true) {
+  let age = 2;
+  if (true) {
+    let age = 3;
+  }
+}
+console.log(age);
+```
+
+```js
+// 다 덮어쓰고 넘어감.
+// var 는 펑션을 기준으로 체크함
+var age = 1; // 호이스팅 X
+if (true) {
+  var age = 2;
+  if (true) {
+    var age = 3;
+  }
+}
+console.log(age); // 3이 나옴
+
+// -------------------------------------------------------------
+
+// {} 블록이 있으면 한문장으로 생각함.
+// let 은 {}(블록)을 기준으로 체크함
+// 건너뜀
+let age = 1; // 호이스팅 X
+if (true) {
+  let age = 2;
+  if (true) {
+    let age = 3;
+  }
+}
+console.log(age); // 1이 나옴
+```
+
+# 리액트 프로젝트 준비
+
+## 0. 사전준비
+
+- node.js 설치 (nvm 을 통해서 버전 교체 가능) - node.js 설치는 회사규칙
+- npm 은 자동으로 설치됨.
+- yarn 은 직접 설치하여야 함.
+- gitHub 에 repository 생성.
+
+## 1. 프로젝트 생성법
+
+: 폴더명은 규칙 (소문자로)
+: 리액트 프로젝트
+
+- npx create-react-app ./ --template typescript
+
+## 2. 진행순서
+
+: public > www 폴더 생성 > images, js, assets, css 폴더 생성
+: React js 버전으로 진행. (CSR) > 바로 타입스크립트로 들어가는걸 (권장) - 현재는 안배웠음.
+: React ts 버전으로 진행.
+: Next ts 버전으로 진행. (SSR)
+
+## 3. 프로젝트 내용 기본 파악하기
+
+### 3.1. node_modules
+
+: npm 또는 yarn 으로 다운로드 받은 파일 보관 폴더
+: npm install 라이브러리명 을 이용하여 다운로드 받고 활용
+: 만약 프로젝트가 라이브러리 등의 오류가 발생했다면(파일 깨졌을 때)
+
+- node_modules 폴더 삭제
+- package-lock.json 파일 삭제 - node_modules 에서 다운받은 목록이 들어가 있음.
+- 이후 `npm i` 를 작성 후 실행(터미널)
+  : 깃허브에 push 대상에서 제외하기 위해 .gitignore 에 자동 입력 되어있음.
+
+### 3.2. public 폴더
+
+- **꼭 기억하세요. 압축 안됩니다.**
+  - 용량 최적화를 하지않음.
+  - Webpack에서 제외됨.
+  - Webpack > 용량최적화 시켜주는 거
+  - 파일들이 있다면 src에 넣어두자.
+    - src는 Webpack 해준다.
+
+### index.html
+
+- 최초 웹서비스 실행 시 실행되는 파일명.(파일명 변경 불가)
+- lang="ko" 수정
+- favicon 아이콘 수정
+- SEO 관련 내용은 별도 추가 (네이버 검색, 구글 검색, GA4 적용 예정)
+- apple-touch-icon 수정
+- title 내용 수정
+- manifest.json 은 추후 내용 수정필요
+- id="root" 는 리액트 미리보기 및 결과물이 배치되는 장소
+
+```html
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <!-- SEO 적용 필요 : 네이버 검색 및 구글 검색 등록, GA4(누가 왔는지 분석 하는 것) 예정 -->
+    <meta name="description" content="카카오 브레인 블로그 클론 코딩" />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <title>카카오 브레인블로그</title>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+  </body>
+</html>
+```
+
+: manifest.json
+
+- https://web.dev/articles/add-manifest?hl=ko
+
+```json
+{
+  "short_name": "카카오 브레인 블로그 클론코딩",
+  "name": "카카오 브레인 블로그 클론코딩",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "logo192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "logo512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
+```
+
+: robots.txt
+
+- 검색엔진 로봇이 내용을 접근해서 보관하는 여부 설정
+- 상세 경험은 네이버 및 구글 검색엔진 등록 시 실습
+  - 크롤링
+  - 정보 기재로 필요 정보를 제외시키거나 할 때 사용
+
+# 3.3. src 폴더
+
+- webpack 의 대상폴더
+- index.js
+- 리액트 실행 시 최초 대상의 파일
+
+```js
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App";
+
+// 아래 모양이 기본형태임 주석빼고.
+
+// 아래 라이브러리는 구글의 웹 성능 리포트 기능
+// import reportWebVitals from "./reportWebVitals";
+// react가 만든 html에 아이디 root를 찾아서 태그 가져와라
+const root = ReactDOM.createRoot(document.getElementById("root"));
+// root 태그에 .render로 해당 jsx(프라그먼트)를 그려줘라
+root.render(
+  // StrictMode 콘솔을 2번 찍어준다. 디버그 전용 <React.StrictMode>  </React.StrictMode>
+  <App />
+);
+
+// If you want to start measuring performance in your app, pass a function
+// to log results (for example: reportWebVitals(console.log))
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+//reportWebVitals();
+```
+
+```js
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App";
+
+// react study에 정리 되있음.
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<App />);
+```
+
+## src 내부 삭제 해야될 파일
+
+### TDD 관련 파일 제거 (Test Driven Devlop)
+
+- App.test.js
+- setupTests.js
+- TDD란?
+
+  - 테스트 주도 개발
+  - 프로젝트 다 끝나고 나중에 알려주신다함.
+  - 성공 가능성이 있는 프로젝트라면 TDD를 한다함.
+  - 시제품이 들어가고 반응이 좋으면 TDD 적용 후 고도화
+
+- 성능 측정 파일 제거
+
+  - reportWebVitals.js
+
+- App.js 는 최초 하면에 보여지는 내용
+
+# 3.4. .gitignore 파일
+
+- 깃허브 파일 예외 사항 기재
+- 폴더 및 파일 작성하면 제외됨.
+- git에 파일 제외 시키는 명단
+- 추후 내용 작성 필요(예. 인증키(.env))
+
+# 3.5. package-lock.json
+
+- node_modules 에서 사용된 라이브러리의 버전 보관
+
+- 빽업 파일이라 보면됨.
+- 손도 대지말고 그대로 둬라
+- 대신 파일이 깨졌을 땐 node-modules하고
+  package-lock.json 삭제하고 npm i 해서 다시 설치해라
+
+# 3.6. package.json
+
+- 라이브러리 뭐 썼는지 알 수 있음.
+- node.js 프로젝트 생성 시 기초 정보 관리내용
+- `매우 중요` dependencies
+  - dependencies 항목이 중요합니다.
+    - 프로젝트에 실제 활용한 라이브러리 목록(파악용도)
+    - 최종 빌드한 소스에 포함이 되는 라이브러리들 목록
+    - 개발 / 최종 빌드한 소스에 포함이 되는 라이브러리들 목록
+      - npm start 개발 시 포함
+      - npm build 배포 시 포함
+- 인터넷에 같이 올라가는 것
+
+- 밑에 @testing 으로 된거 주석으로 된거는 지워라
+
+```json
+"dependencies": {
+    //"@testing-library/jest-dom": "^5.17.0",
+    //"@testing-library/react": "^13.4.0",
+    //"@testing-library/user-event": "^13.5.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "5.0.1",
+    //"web-vitals": "^2.1.4"
+  },
+```
+
+# React 기초 1.
