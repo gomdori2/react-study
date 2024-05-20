@@ -1,11 +1,54 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>리액트 공부</title>
-</head>
-<body>
-   
-</body>
+  </head>
+  <body>
+    <style>
+      /* css로 해당되는 태그의 앞쪽과 뒤쪽을 찾는 것.
+            before, after*/
+      .wrap {
+        position: relative;
+        width: 100%;
+        height: 400px;
+        background-color: goldenrod;
+        margin: 100px auto;
+        padding: 50px;
+      }
+      .box {
+        position: relative;
+        width: 100px;
+        height: 100px;
+        margin: 100px auto;
+        background-color: hotpink;
+        text-align: center;
+      }
+      .box span::before {
+        display: inline-block;
+        content: "";
+        width: 4px;
+        height: 4px;
+        background-color: red;
+        border-radius: 10px;
+        position: absolute;
+        left: 24px;
+        top: 1px;
+      }
+      .box span::after {
+        display: inline-block;
+        content: "";
+        width: 10px;
+        height: 10px;
+        background-color: blue;
+      }
+    </style>
+
+    <div class="wrap">
+      <div class="box">
+        <span>안녕</span>
+      </div>
+    </div>
+  </body>
 </html>
